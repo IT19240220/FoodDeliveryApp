@@ -6,6 +6,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  FlatList,
+  TouchableHighlight,
+  ImageBackground,
 } from 'react-native';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -19,10 +22,20 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import Checkbox from 'expo-checkbox';
+import firstBackground from '../../assets/firstBackground.jpg';
 
 export default function ViewFoodsCustomer({ navigation }) {
   const [foods, setFoods] = useState([]);
   const [isChecked, setChecked] = useState(false);
+
+  const generateColor = () => {
+    const randomColor = Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, '0');
+    return `#${randomColor}`;
+  };
+
+  const image = { firstBackground };
 
   useEffect(() => {
     setFoodsItems();
@@ -46,6 +59,7 @@ export default function ViewFoodsCustomer({ navigation }) {
 
   return (
     <View style={styles.container}>
+      {/* <ImageBackground source={image} resizeMode="cover" style={styles.image}> */}
       <ScrollView>
         {foods &&
           foods.map((item, key) => {
@@ -66,6 +80,7 @@ export default function ViewFoodsCustomer({ navigation }) {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     alignItems: 'flex-start',
+                    backgroundColor: generateColor(),
                   }}
                 >
                   <View
@@ -74,10 +89,19 @@ export default function ViewFoodsCustomer({ navigation }) {
                       flexDirection: 'row',
                     }}
                   >
-                    <Text style={{ fontSize: 12, margin: 10 }}>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        margin: 10,
+                        fontStyle: 'italic',
+                        fontWeight: '900',
+                      }}
+                    >
                       {'Name : '}
                     </Text>
-                    <Text style={{ fontSize: 24 }}>{item.name}</Text>
+                    <Text style={{ fontSize: 24, fontWeight: '900' }}>
+                      {item.name}
+                    </Text>
                   </View>
                   <View
                     style={{
@@ -85,41 +109,74 @@ export default function ViewFoodsCustomer({ navigation }) {
                       flexDirection: 'row',
                     }}
                   >
-                    <Text style={{ fontSize: 12, margin: 10 }}>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        margin: 10,
+                        fontStyle: 'italic',
+                        fontWeight: '900',
+                      }}
+                    >
                       {'Price : '}
                     </Text>
-                    <Text style={{ fontSize: 24 }}>{item.price}</Text>
+                    <Text style={{ fontSize: 24, fontWeight: '900' }}>
+                      {item.price}
+                    </Text>
                   </View>
                   <View
                     style={{
                       width: '50%',
-                      flexDirection: 'row',
+                      flexDirection: 'column',
                       flexWrap: 'wrap',
                     }}
                   >
-                    <Text style={{ fontSize: 12, margin: 10 }}>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        margin: 10,
+                        fontStyle: 'italic',
+                        fontWeight: '900',
+                      }}
+                    >
                       {'Description : '}
                     </Text>
-                    <Text style={{ fontSize: 24, margin: 10 }}>
+                    <Text
+                      style={{ fontSize: 24, margin: 10, fontWeight: '900' }}
+                    >
                       {item.description}
                     </Text>
                   </View>
                   <View style={{ margin: 40 }}>
-                    <Button
-                      style={{ padding: 50 }}
-                      title="Add Items"
-                      onPress={() =>
-                        navigation.navigate('AddCustomerDetails', {
-                          items: { ItemName: item.name, ItemPrice: item.price },
-                        })
-                      }
-                    ></Button>
+                    <TouchableHighlight
+                      style={{
+                        height: 40,
+                        width: 160,
+                        borderRadius: 10,
+                        backgroundColor: 'yellow',
+                        marginLeft: 50,
+                        marginRight: 50,
+                      }}
+                    >
+                      <Button
+                        color="#841584"
+                        onPress={() =>
+                          navigation.navigate('AddCustomerDetails', {
+                            items: {
+                              ItemName: item.name,
+                              ItemPrice: item.price,
+                            },
+                          })
+                        }
+                        title="ADD ITEM"
+                      />
+                    </TouchableHighlight>
                   </View>
                 </View>
               </View>
             );
           })}
       </ScrollView>
+      {/* </ImageBackground> */}
     </View>
   );
 }
@@ -127,5 +184,12 @@ export default function ViewFoodsCustomer({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
+    backgroundColor: '246, 255, 140 0.1 '
+    // ImageBackground: firstBackground
+
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

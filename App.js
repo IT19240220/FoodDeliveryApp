@@ -101,7 +101,7 @@ export default function App() {
         <Stack.Screen
           name="AddCustomerDetails"
           component={AddCustomerDetails}
-          options={{ title: 'Add Details' }}
+          options={{ title: 'Add Delivery Details' }}
         />
         <Stack.Screen
           name="ViewCustomerOrder"

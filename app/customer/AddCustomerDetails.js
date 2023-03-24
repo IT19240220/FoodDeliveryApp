@@ -7,11 +7,12 @@ import {
   Text,
   TextInput,
   View,
-  DateP,
+  TouchableHighlight,
 } from 'react-native';
 import { useEffect, useState } from 'react';
 import { doc, setDoc, addDoc } from 'firebase/firestore';
 import { db } from '../../FirebaseDB';
+import { faBold } from '@fortawesome/free-solid-svg-icons';
 
 export default function AddCustomerDetails({ route, navigation }) {
   const [deliveryName, setDeliveryName] = useState('');
@@ -39,43 +40,69 @@ export default function AddCustomerDetails({ route, navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={{ marginTop: 100 }}>Enter Name</Text>
+        <Text style={{ marginTop: 100, marginBottom: 20, fontSize: 20 }}>
+          Enter Name
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setDeliveryName}
           placeholder={'Enter name'}
           value={deliveryName}
+          backgroundColor={'white'}
         />
 
-        <Text style={{ marginTop: 10 }}>Enter Location</Text>
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Enter Location
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setLocation}
           value={location}
           placeholder={'Enter location'}
+          backgroundColor={'white'}
         />
 
-        <Text style={{ marginTop: 10 }}>Enter Time</Text>
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Schedule Delivery Time
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setTime}
           placeholder={'Enter delivery time'}
           value={time}
+          backgroundColor={'white'}
         />
 
-        <Text style={{ marginTop: 10 }}>Enter Phone Number</Text>
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Enter Phone Number
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setPhoneNo}
           value={phoneNo}
           placeholder={'Enter phone number'}
+          backgroundColor={'white'}
         />
-        <Button
-          title="Place Order"
-          onPress={() => {
-            placeOrder();
-          }}
-        />
+        <View style={{ margin: 40 }}>
+          <TouchableHighlight
+            style={{
+              height: 40,
+              width: 160,
+              borderRadius: 10,
+              backgroundColor: 'yellow',
+              marginLeft: 50,
+              marginRight: 50,
+            }}
+          >
+            <Button
+              color="#841584"
+              onPress={() => {
+                placeOrder();
+              }}
+              title="PLACE ORDER"
+            />
+          </TouchableHighlight>
+        </View>
       </ScrollView>
     </View>
   );
@@ -84,17 +111,16 @@ export default function AddCustomerDetails({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
   },
   input: {
-    height: 40,
+    height: 60,
     // margin: 12,
     width: 300,
-    marginBottom: 80,
+    marginBottom: 60,
+    fontSize: 16,
     borderWidth: 1,
     padding: 10,
   },
