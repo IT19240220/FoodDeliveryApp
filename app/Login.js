@@ -13,7 +13,7 @@ export default function Login({navigation}) {
     function loginDB() {
         // auth.signInWithEmailAndPassword(username, password).then((val) => {
         //     console.log(val)
-            navigation.navigate('ViewOrdersBuyer')
+            navigation.navigate('ViewFoodsCustomer')
         // })
     }
 

@@ -15,6 +15,11 @@ import ViewFoodsBuyer from './app/buyer/ViewFoodsBuyer';
 import SelectFoods from './app/buyer/selectFoods';
 import DeliveryCheckIn from './app/DeliveryPerson/DeliveryCheckIn';
 import DeliveryStart from './app/DeliveryPerson/DeliveryStart';
+import ViewFoodsCustomer from './app/customer/ViewFoodsCustomer';
+import AddCustomerDetails from './app/customer/AddCustomerDetails';
+import ViewCustomerOrder from './app/customer/ViewCustomerOrder';
+import ViewCustomerDetails from './app/customer/ViewCustomerDetails';
+import UpdateCustomerDetails from './app/customer/UpdateCustomerDetails';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -76,18 +81,44 @@ export default function App() {
           component={SelectFoods}
           options={{ title: 'Select Food' }}
         />
-
         {/* Delivery Person */}
         <Stack.Screen
           name="DeliveryCheckIn"
           component={DeliveryCheckIn}
           options={{ title: 'Delivery Check In' }}
         />
-
         <Stack.Screen
           name="DeliveryStart"
           component={DeliveryStart}
           options={{ title: 'Delivery Start' }}
+        />
+        <Stack.Screen
+          name="ViewFoodsCustomer"
+          component={ViewFoodsCustomer}
+          options={{ title: 'Add Cake Item' }}
+        />
+
+        <Stack.Screen
+          name="AddCustomerDetails"
+          component={AddCustomerDetails}
+          options={{ title: 'Add Details' }}
+        />
+        <Stack.Screen
+          name="ViewCustomerOrder"
+          component={ViewCustomerOrder}
+          options={{ title: 'My Orders' }}
+        />
+
+        <Stack.Screen
+          name="ViewCustomerDetails"
+          component={ViewCustomerDetails}
+          options={{ title: 'My Profile' }}
+        />
+
+        <Stack.Screen
+          name="UpdateCustomerDetails"
+          component={UpdateCustomerDetails}
+          options={{ title: 'Update Profile' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
