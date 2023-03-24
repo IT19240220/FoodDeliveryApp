@@ -29,9 +29,10 @@ export default function AddFood({route, navigation}) {
     }
 
     return (
-        <View style={styles.container}>
-            <ScrollView style={{marginTop: 130}}>
-            <Text style={{marginTop: 10, marginBottom: 10}}>Enter Food</Text>
+        <View style={styles.container}>            
+            <ScrollView style={{marginTop: 100}}>
+            <Text style={styles.topic}>Update Cake</Text>
+            <Text style={{marginTop: 5, marginBottom: 10}}>Enter Item Name</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText}
@@ -50,11 +51,14 @@ export default function AddFood({route, navigation}) {
                 value={description}
             />
             <Button
-                title="Update Food"
+                title="Update Cake"
                 onPress={() => {
                     // console.log(45677)
                     addDelivery()
                 }}
+                color="#58079C"
+                width = '10px'
+                style={{}}
             />
             </ScrollView>
         </View>
@@ -64,7 +68,7 @@ export default function AddFood({route, navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFC0CB',
+        backgroundColor: '#C39BD3',
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10,
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
         width: 300,
         borderRadius: 5,
         alignContent: 'center',
-        borderColor: '#AF7AC5',
+        borderColor: '#101DA4',
         // margin: 12,
         marginBottom: 10,
         borderWidth: 1,
@@ -86,5 +90,13 @@ const styles = StyleSheet.create({
         marginTop: 70,
         padding: 10,
         borderRadius:15,
+        alignSelf: 'center'
      },
+     topic: {
+        marginTop: 10,
+        marginBottom: 50,
+        fontSize: 35,
+        alignSelf: 'center',
+        fontStyle: 'bold'
+     }
 });
