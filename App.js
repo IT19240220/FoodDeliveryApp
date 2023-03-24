@@ -38,17 +38,17 @@ export default function App() {
                 <Stack.Screen
                     name="ViewFoods"
                     component={ViewFoods}
-                    options={{title: 'View Food'}}
+                    options={{title: 'View Cake'}}
                 />
                 <Stack.Screen
                     name="AddFood"
                     component={AddFood}
-                    options={{title: 'Add Food'}}
+                    options={{title: 'Add Cake'}}
                 />
                 <Stack.Screen
                     name="UpdateFood"
                     component={UpdateFood}
-                    options={{title: 'Update Food'}}
+                    options={{title: 'Update Cake'}}
                 />
                 <Stack.Screen
                     name="SignUp"
