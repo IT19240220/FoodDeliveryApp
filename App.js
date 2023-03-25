@@ -23,64 +23,64 @@ import UpdateCustomerDetails from './app/customer/UpdateCustomerDetails';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ title: 'Login' }}
-        />
-        <Stack.Screen
-          name="ViewOrders"
-          component={ViewOrders}
-          options={{ title: 'View Orders' }}
-        />
-        <Stack.Screen
-          name="AddDeliveryPerson"
-          component={AddDeliveryPerson}
-          options={{ title: 'Add Delivery Person' }}
-        />
-        <Stack.Screen
-          name="ViewFoods"
-          component={ViewFoods}
-          options={{ title: 'View Food' }}
-        />
-        <Stack.Screen
-          name="AddFood"
-          component={AddFood}
-          options={{ title: 'Add Food' }}
-        />
-        <Stack.Screen
-          name="UpdateFood"
-          component={UpdateFood}
-          options={{ title: 'Update Food' }}
-        />
-        <Stack.Screen
-          name="SignUp"
-          component={SignUp}
-          options={{ title: 'Create Account' }}
-        />
-        <Stack.Screen
-          name="ViewOrdersBuyer"
-          component={ViewOrdersBuyer}
-          options={{ title: 'View Orders' }}
-        />
-        <Stack.Screen
-          name="AddOrderBuyer"
-          component={AddOrderBuyer}
-          options={{ title: 'New Order' }}
-        />
-        <Stack.Screen
-          name="ViewFoodsBuyer"
-          component={ViewFoodsBuyer}
-          options={{ title: 'View Food' }}
-        />
-        <Stack.Screen
-          name="SelectFoods"
-          component={SelectFoods}
-          options={{ title: 'Select Food' }}
-        />
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{title: 'Login'}}
+                />
+                <Stack.Screen
+                    name="ViewOrders"
+                    component={ViewOrders}
+                    options={{title: 'View Orders'}}
+                />
+                <Stack.Screen
+                    name="AddDeliveryPerson"
+                    component={AddDeliveryPerson}
+                    options={{title: 'Add Delivery Person'}}
+                />
+                <Stack.Screen
+                    name="ViewFoods"
+                    component={ViewFoods}
+                    options={{title: 'View Cake'}}
+                />
+                <Stack.Screen
+                    name="AddFood"
+                    component={AddFood}
+                    options={{title: 'Add Cake'}}
+                />
+                <Stack.Screen
+                    name="UpdateFood"
+                    component={UpdateFood}
+                    options={{title: 'Update Cake'}}
+                />
+                <Stack.Screen
+                    name="SignUp"
+                    component={SignUp}
+                    options={{title: 'Create Account'}}
+                />
+                <Stack.Screen
+                    name="ViewOrdersBuyer"
+                    component={ViewOrdersBuyer}
+                    options={{title: 'View Orders'}}
+                />
+                <Stack.Screen
+                    name="AddOrderBuyer"
+                    component={AddOrderBuyer}
+                    options={{title: 'New Order'}}
+                />
+                <Stack.Screen
+                    name="ViewFoodsBuyer"
+                    component={ViewFoodsBuyer}
+                    options={{title: 'View Food'}}
+                />
+                <Stack.Screen
+                    name="SelectFoods"
+                    component={SelectFoods}
+                    options={{title: 'Select Food'}}
+                />
         {/* Delivery Person */}
         <Stack.Screen
           name="DeliveryCheckIn"
