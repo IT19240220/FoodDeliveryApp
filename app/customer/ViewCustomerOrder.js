@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,12 +7,7 @@ import {
 } from 'react-native';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import {
-  faTrash,
-  faAdd,
-  faAlignCenter,
-  faPen,
-} from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../../FirebaseDB';
 import {
   doc,
@@ -23,7 +16,6 @@ import {
   query,
   deleteDoc,
 } from 'firebase/firestore';
-import Checkbox from 'expo-checkbox';
 
 export default function ViewCustomerOrder({ navigation }) {
   const [foods, setFoods] = useState([]);
@@ -59,45 +51,10 @@ export default function ViewCustomerOrder({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {/* <ScrollView
-          horizontal
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-        >
-          <View
-            style={{
-              alignItems: 'flex-end',
-              margin: 10,
-            }}
-          >
-            <Button
-              title="Edit Profile"
-              onPress={() => navigation.navigate('ViewCustomerDetails')}
-            ></Button>
-          </View>
-          <View
-            style={{
-              alignItems: 'flex-end',
-              margin: 10,
-            }}
-          >
-            <Button
-              title="Edit Items"
-              // onPress={() => navigation.navigate('AddCustomerDetails')}
-            ></Button>
-          </View>
-        </ScrollView> */}
         {foods &&
           foods.map((item, key) => {
             return (
               <View key={key} style={{ flexDirection: 'row' }}>
-                {/* <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('UpdateFood', {
-                      foodId: item.id,
-                      foodName: item.name,
-                    })
-                  }
-                > */}
                 <View
                   style={{
                     borderWidth: 1,
@@ -117,34 +74,28 @@ export default function ViewCustomerOrder({ navigation }) {
                     alignItems: 'flex-start',
                   }}
                 >
-                  {/* <View style={styles.section}>
-                      <Checkbox
-                        style={styles.checkbox}
-                        value={isChecked}
-                        onValueChange={setChecked}
-                        color={isChecked ? '#4630EB' : undefined}
-                      />
-                    </View> */}
                   <View
                     style={{
                       width: '50%',
                       flex: 1,
                       flexDirection: 'column',
-                      alignItems: 'center',
+                      alignItems: 'flex-start',
+                      backgroundColor: 'white',
                     }}
                   >
+                    <Text style={{ fontSize: 16, marginTop: 8 }}>
+                      Item :{item.itemName}
+                    </Text>
+                    <Text style={{ fontSize: 16, marginTop: 8 }}>
+                      Price :{item.itemPrice}
+                    </Text>
                     <Text style={{ fontSize: 16, marginTop: 8 }}>
                       Name : {item.name}
                     </Text>
                     <Text style={{ fontSize: 16, marginTop: 8 }}>
                       Location : {item.location}
                     </Text>
-                    <Text style={{ fontSize: 16, marginTop: 8 }}>
-                      Item Name :{item.itemName}
-                    </Text>
-                    <Text style={{ fontSize: 16, marginTop: 8 }}>
-                      Item Price :{item.itemPrice}
-                    </Text>
+
                     <Text style={{ fontSize: 16, marginTop: 8 }}>
                       Phone Number : {item.phoneNo}
                     </Text>
@@ -153,7 +104,6 @@ export default function ViewCustomerOrder({ navigation }) {
                     </Text>
                   </View>
                 </View>
-                {/* </TouchableOpacity> */}
                 <View style={{ flex: 0.3, flexDirection: 'row' }}>
                   <TouchableOpacity
                     style={{ marginTop: 70, marginLeft: 15 }}
@@ -175,8 +125,8 @@ export default function ViewCustomerOrder({ navigation }) {
                         customerLocation: item.location,
                         customerPhoneNo: item.phoneNo,
                         customerTime: item.time,
-                        itemName : item.itemName,
-                        itemPrice : item.itemPrice
+                        itemName: item.itemName,
+                        itemPrice: item.itemPrice,
                       })
                     }
                   >
@@ -194,20 +144,10 @@ export default function ViewCustomerOrder({ navigation }) {
       </ScrollView>
     </View>
   );
-
-  // function deleteFood(id) {
-  //     deleteDoc(doc(db, 'foods', id)).then(() => {
-
-  //     })
-  // }
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
     marginTop: 20,
   },
 });

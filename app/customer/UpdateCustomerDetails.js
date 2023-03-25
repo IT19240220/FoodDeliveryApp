@@ -1,23 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import {
   Button,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
-  DateP,
+  TouchableHighlight,
 } from 'react-native';
-import { useEffect, useState } from 'react';
-import { doc, setDoc, addDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useState, useRef } from 'react';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../FirebaseDB';
+import PhoneInput from 'react-native-phone-number-input';
 
 export default function UpdateCustomerDetails({ route, navigation }) {
   const [deliveryName, setDeliveryName] = useState('');
   const [location, setLocation] = useState('');
   const [time, setTime] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
+  const [state, setState] = useState('');
+  const [state1, setState1] = useState('');
+  const [state2, setState2] = useState('');
+  const [state3, setState3] = useState('');
 
   const {
     customerID,
@@ -25,9 +28,10 @@ export default function UpdateCustomerDetails({ route, navigation }) {
     customerLocation,
     customerTime,
     customerPhoneNo,
-    itemName,
-    itemPrice
   } = route.params;
+
+  const phoneInput = useRef();
+  const [valid, setValid] = useState(false);
 
   useEffect(() => {
     setDeliveryName(customerName);
@@ -44,7 +48,6 @@ export default function UpdateCustomerDetails({ route, navigation }) {
       time: time,
       phoneNo: phoneNo,
     }).then(() => {
-      // console.log(456)
       navigation.navigate('ViewCustomerOrder');
     });
   }
@@ -52,35 +55,74 @@ export default function UpdateCustomerDetails({ route, navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={{ marginTop: 100 }}>Enter Name</Text>
+        <Text style={{ marginTop: 100, marginBottom: 20, fontSize: 20 }}>
+          Name
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setDeliveryName}
+          placeholder={'Enter your name'}
           value={deliveryName}
+          backgroundColor={'white'}
         />
 
-        <Text style={{ marginTop: 10 }}>Enter Location</Text>
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Delivery Address
+        </Text>
         <TextInput
           style={styles.input}
           onChangeText={setLocation}
           value={location}
+          placeholder={'Enter your address'}
+          backgroundColor={'white'}
         />
 
-        <Text style={{ marginTop: 10 }}>Enter Time</Text>
-        <TextInput style={styles.input} onChangeText={setTime} value={time} />
-
-        <Text style={{ marginTop: 10 }}>Enter Phone Number</Text>
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Schedule Delivery Time
+        </Text>
         <TextInput
           style={styles.input}
-          onChangeText={setPhoneNo}
-          value={phoneNo}
+          onChangeText={setTime}
+          placeholder={'Enter delivery time'}
+          value={time}
+          backgroundColor={'white'}
         />
-        <Button
-          title="Update Details"
-          onPress={() => {
-            updateDetails();
+
+        <Text style={{ marginTop: 10, marginBottom: 20, fontSize: 20 }}>
+          Phone Number
+        </Text>
+        <PhoneInput
+          style={styles.input}
+          ref={phoneInput}
+          defaultValue={phoneNo}
+          defaultCode="SL"
+          onChangeFormattedText={(text) => {
+            setPhoneNo(text);
           }}
+          withDarkTheme
+          withShadow
+          autoFocus
         />
+        <View style={{ margin: 40 }}>
+          <TouchableHighlight
+            style={{
+              height: 40,
+              width: 160,
+              borderRadius: 10,
+              backgroundColor: 'yellow',
+              marginLeft: 50,
+              marginRight: 50,
+            }}
+          >
+            <Button
+              color="#841584"
+              onPress={() => {
+                updateDetails();
+              }}
+              title="UPDATE DETAILS"
+            />
+          </TouchableHighlight>
+        </View>
       </ScrollView>
     </View>
   );
@@ -89,18 +131,15 @@ export default function UpdateCustomerDetails({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
   },
   input: {
-    height: 40,
-    // margin: 12,
-    width: 300,
-    marginBottom: 80,
-    borderWidth: 1,
+    height: 60,
+    width: 325,
+    marginBottom: 60,
+    fontSize: 16,
     padding: 10,
   },
 });

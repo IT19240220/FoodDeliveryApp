@@ -1,32 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import {
   Button,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  FlatList,
   TouchableHighlight,
-  ImageBackground,
 } from 'react-native';
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faTrash, faAdd } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../../FirebaseDB';
-import {
-  doc,
-  collection,
-  onSnapshot,
-  query,
-  deleteDoc,
-} from 'firebase/firestore';
-import Checkbox from 'expo-checkbox';
-import firstBackground from '../../assets/firstBackground.jpg';
+import { collection, onSnapshot, query } from 'firebase/firestore';
 
 export default function ViewFoodsCustomer({ navigation }) {
   const [foods, setFoods] = useState([]);
-  const [isChecked, setChecked] = useState(false);
 
   const generateColor = () => {
     const randomColor = Math.floor(Math.random() * 16777215)
@@ -34,8 +19,6 @@ export default function ViewFoodsCustomer({ navigation }) {
       .padStart(6, '0');
     return `#${randomColor}`;
   };
-
-  const image = { firstBackground };
 
   useEffect(() => {
     setFoodsItems();
@@ -59,7 +42,6 @@ export default function ViewFoodsCustomer({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <ImageBackground source={image} resizeMode="cover" style={styles.image}> */}
       <ScrollView>
         {foods &&
           foods.map((item, key) => {
@@ -176,7 +158,6 @@ export default function ViewFoodsCustomer({ navigation }) {
             );
           })}
       </ScrollView>
-      {/* </ImageBackground> */}
     </View>
   );
 }
@@ -184,9 +165,7 @@ export default function ViewFoodsCustomer({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    backgroundColor: '246, 255, 140 0.1 '
-    // ImageBackground: firstBackground
-
+    backgroundColor: '246, 255, 140 0.1 ',
   },
   image: {
     flex: 1,
