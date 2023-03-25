@@ -118,7 +118,7 @@ export default function App() {
         <Stack.Screen
           name="UpdateCustomerDetails"
           component={UpdateCustomerDetails}
-          options={{ title: 'Update Profile' }}
+          options={{ title: 'Update Details' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

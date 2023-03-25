@@ -148,6 +148,16 @@ export default function AddCustomerDetails({ route, navigation }) {
             />
           </TouchableHighlight>
         </View>
+
+        <View style={{ marginTop: 80, marginLeft: '60%', borderRadius: 20 }}>
+          <Button
+            color="#A2B223"
+            title="Log Out"
+            onPress={() => {
+              navigation.navigate('Login');
+            }}
+          />
+        </View>
       </ScrollView>
     </View>
   );

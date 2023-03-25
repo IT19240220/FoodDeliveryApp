@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -141,6 +142,24 @@ export default function ViewCustomerOrder({ navigation }) {
               </View>
             );
           })}
+
+        <View
+          style={{
+            marginBottom: 10,
+            marginEnd: 20,
+            marginLeft: '60%',
+            borderRadius: 20,
+            alignItems: 'flex-end',
+          }}
+        >
+          <Button
+            color="#A2B223"
+            title="Log Out"
+            onPress={() => {
+              navigation.navigate('Login');
+            }}
+          />
+        </View>
       </ScrollView>
     </View>
   );
