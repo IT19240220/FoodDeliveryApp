@@ -1,20 +1,28 @@
 import {StatusBar} from 'expo-status-bar';
 import {Button, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useEffect, useState} from "react";
-import {doc, updateDoc, addDoc} from 'firebase/firestore'
+import {doc, updateDoc, addDoc, setDoc} from 'firebase/firestore'
 // import {authDB} from '../FirebaseDB'
 import auth from '@react-native-firebase/auth';
 
 export default function Login({navigation}) {
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('');
 
     function loginDB() {
-        auth().createUserWithEmailAndPassword(username, password).then((val) => {
+        auth().createUserWithEmailAndPassword(email, password).then((val) => {
             console.log(val)
-            navigation.navigate('Login')
+            setDoc(doc(db, 'users', new Date().toString()), {
+                email: email,
+                password: password,
+                userType: userType,
+            }).then(() => {
+                // console.log(456)
+                navigation.navigate('Login')
+            })
+            // navigation.navigate('Login')
         })
     }
 
@@ -23,8 +31,8 @@ export default function Login({navigation}) {
             <Text style={{marginTop: 50}}>Enter Username</Text>
             <TextInput
                 style={styles.input}
-                onChangeText={setUsername}
-                value={username}
+                onChangeText={setEmail}
+                value={email}
             />
 
             <Text style={{marginTop: 10}}>Enter Password</Text>

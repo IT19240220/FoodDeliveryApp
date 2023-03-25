@@ -20,7 +20,7 @@ export default function ViewFoods({ navigation }) {
         <View style={styles.container}>
             <ScrollView>
                 <View style={{ alignItems: 'flex-end', marginRight: 23, marginBottom: 10 }}>
-                    <Button title="Add Food" style = {styles.submitButton} onPress={() => navigation.navigate('AddFood')}>
+                    <Button title="Add Cake" style = {styles.submitButton} onPress={() => navigation.navigate('AddFood')}>
                     </Button>
                 </View>
                 {

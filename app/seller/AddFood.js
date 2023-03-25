@@ -10,7 +10,7 @@ export default function AddFood({ navigation }) {
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
 
-    function addFood() {
+    function addCake() {
         setDoc(doc(db, 'foods', new Date().toString()), {
             name: text,
             price: price,
@@ -23,7 +23,8 @@ export default function AddFood({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <ScrollView style={{ marginTop: 130 }}>
+            <ScrollView style={{ marginTop: 100 }}>
+            <Text style={styles.topic}>Update Cake</Text>
                 <Text style={{ marginTop: 10 }}>Enter Food</Text>
                 <TextInput
                     style={styles.input}
@@ -43,11 +44,11 @@ export default function AddFood({ navigation }) {
                     value={description}
                 />
                 <Button
-                    style={styles.button}
-                    title="Add Food"
+                    color={'#0A3875'}
+                    title="Add Cake"
                     onPress={() => {
                         // console.log(45677)
-                        addFood()
+                        addCake()
                     }}
                 />
             </ScrollView>
@@ -58,7 +59,7 @@ export default function AddFood({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFC0CB',
+        backgroundColor: '#51D6CA',
         alignItems: 'center',
         justifyContent: 'center',
         marginLeft: 10,
@@ -68,11 +69,11 @@ const styles = StyleSheet.create({
         height: 40,
         width: 300,
         borderRadius: 5,
-        borderColor: '#AF7AC5',
+        borderColor: '#094742',
         // margin: 12,
         marginBottom: 10,
         borderWidth: 1,
-        padding: 1,
+        padding: 1
     },
     button: {
         color: '#C71585',
@@ -80,4 +81,13 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 15,
     },
+    topic: {
+       marginTop: 10,
+       marginBottom: 50,
+       fontSize: 35,
+       alignSelf: 'center',
+    },
+    title:{
+        fontWeight: 'bold',
+    }
 });
